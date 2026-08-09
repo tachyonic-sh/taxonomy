@@ -3,6 +3,7 @@
 
 version: "1.0.0"
 updated: "2026-04-24"
+framework_version: "0.x (beta)"  # OWASP MCP Top 10, beta as of 2026-02-19.
 
 MCP01_token_mismanagement:
   name: "Token Mismanagement & Secret Exposure"
