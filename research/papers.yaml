@@ -190,10 +190,25 @@ benchmarks:
 
 # Industry frameworks
 frameworks:
+  - name: "OWASP GenAI LLM Top 10 2026 v1.0"
+    url: "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/"
+    published: "2026-08-04"
+    retrieved: "2026-08-08"
+    description: >
+      Industry standard LLM vulnerability taxonomy, and the current binding for
+      this library. The URL is the reference: a point release replaces the
+      document behind it, so the version and the retrieval date are what pin it.
+      Crosswalk from the 2025 release in mappings/crosswalks/.
+
   - name: "OWASP LLM Top 10 2025"
     url: "https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/"
     published: "2024-11-17"
-    description: "Industry standard LLM vulnerability taxonomy"
+    status: superseded
+    superseded_by: "OWASP GenAI LLM Top 10 2026 v1.0"
+    description: >
+      Retained because assessments delivered before August 2026 cite it. Eight
+      of its ten identifiers were rebound in 2026, so a report labelled against
+      this release cannot be read against the current one without the crosswalk.
 
   - name: "OWASP Agentic Top 10 2026"
     url: "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/"
@@ -224,10 +239,17 @@ frameworks:
     url: "https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/"
     description: "Threat modeling for multi-agent systems"
 
-  - name: "MITRE ATLAS v5.5.0"
-    url: "https://atlas.mitre.org/"
-    published: "2026-03-30"
-    description: "Adversarial threat landscape for AI systems (16 tactics, 84 techniques)"
+  - name: "MITRE ATLAS 2026.07"
+    url: "https://github.com/mitre-atlas/atlas-data"
+    pin: "mitre-atlas/atlas-data@2306ecaf04fb7a14be068b97e3ff40c2d9112e28"
+    distribution_file: "dist/v6/ATLAS-2026.07.yaml"
+    published: "2026-07"
+    description: >
+      Adversarial threat landscape for AI systems. 16 tactics, 101 top-level
+      techniques, 77 sub-techniques, 37 mitigations, 68 case studies. Pinned by
+      commit SHA rather than by atlas.mitre.org, which renders whichever monthly
+      release is current. dist/ATLAS.yaml at the same commit is 5.6.0 and
+      deprecated - read the v6 distribution file named above.
 
   - name: "MITRE ATLAS OpenClaw Investigation"
     url: "https://www.mitre.org/sites/default/files/2026-02/PR-26-00176-1-MITRE-ATLAS-OpenClaw-Investigation.pdf"

@@ -1,5 +1,6 @@
-# tachyonic-heuristics: OWASP LLM Top 10 Mapping
-# Maps public attack IDs to OWASP LLM Top 10 (2025) categories
+# tachyonic taxonomy: OWASP LLM Top 10 Mapping
+# Maps public attack IDs to OWASP LLM Top 10 (2026) categories
+# framework_version: 2026
 
 ---
 
@@ -99,78 +100,7 @@ LLM02_sensitive_information_disclosure:
     - SID-010
     - CTX-003
 
-LLM03_supply_chain:
-  name: "Supply Chain"
-  total: 13
-  description: >
-    Public attack metadata mapped to Supply Chain.
-  attacks:
-    - SC-001
-    - SC-002
-    - SC-003
-    - SC-004
-    - SC-005
-    - SC-006
-    - SC-007
-    - SC-008
-    - SC-009
-    - SC-010
-    - SC-011
-    - SC-012
-    - UCE-005
-
-LLM04_data_and_model_poisoning:
-  name: "Data and Model Poisoning"
-  total: 0
-  description: >
-    Public attack metadata mapped to Data and Model Poisoning.
-  coverage: mapping_only
-  notes: >
-    Data/model poisoning is represented through related supply-chain and
-    vector/embedding attacks; no dedicated DMP-series attack IDs are published.
-  related_attacks:
-    - SC-001
-    - SC-002
-    - SC-003
-    - SC-004
-    - SC-005
-    - SC-006
-    - SC-007
-    - SC-008
-    - SC-009
-    - SC-010
-    - SC-011
-    - SC-012
-    - VE-001
-    - VE-002
-    - VE-003
-    - VE-004
-    - VE-005
-    - VE-006
-    - VE-007
-    - VE-008
-    - VE-009
-    - VE-010
-  attacks:
-
-LLM05_improper_output_handling:
-  name: "Improper Output Handling"
-  total: 10
-  description: >
-    Public attack metadata mapped to Improper Output Handling.
-  attacks:
-    - IOH-001
-    - IOH-002
-    - IOH-003
-    - IOH-004
-    - IOH-005
-    - IOH-006
-    - IOH-007
-    - IOH-008
-    - UCE-001
-    - UCE-002
-
-LLM06_excessive_agency:
+LLM03_excessive_agency:
   name: "Excessive Agency"
   total: 27
   description: >
@@ -204,32 +134,48 @@ LLM06_excessive_agency:
     - IAC-005
     - HTE-002
 
-LLM07_system_prompt_leakage:
-  name: "System Prompt Leakage"
+LLM04_supply_chain:
+  name: "Supply Chain"
   total: 13
   description: >
-    Public attack metadata mapped to System Prompt Leakage.
+    Public attack metadata mapped to Supply Chain.
   attacks:
-    - SPL-001
-    - SPL-002
-    - SPL-003
-    - SPL-004
-    - SPL-005
-    - SPL-006
-    - SPL-007
-    - SPL-008
-    - SPL-009
-    - SPL-010
-    - SPL-011
-    - SPL-012
-    - IAC-003
+    - SC-001
+    - SC-002
+    - SC-003
+    - SC-004
+    - SC-005
+    - SC-006
+    - SC-007
+    - SC-008
+    - SC-009
+    - SC-010
+    - SC-011
+    - SC-012
+    - UCE-005
 
-LLM08_vector_and_embedding_weaknesses:
-  name: "Vector and Embedding Weaknesses"
-  total: 10
+LLM05_data_and_model_poisoning:
+  name: "Data and Model Poisoning"
+  total: 0
   description: >
-    Public attack metadata mapped to Vector and Embedding Weaknesses.
-  attacks:
+    Public attack metadata mapped to Data and Model Poisoning.
+  coverage: mapping_only
+  notes: >
+    Data/model poisoning is represented through related supply-chain and
+    vector/embedding attacks; no dedicated DMP-series attack IDs are published.
+  related_attacks:
+    - SC-001
+    - SC-002
+    - SC-003
+    - SC-004
+    - SC-005
+    - SC-006
+    - SC-007
+    - SC-008
+    - SC-009
+    - SC-010
+    - SC-011
+    - SC-012
     - VE-001
     - VE-002
     - VE-003
@@ -240,8 +186,18 @@ LLM08_vector_and_embedding_weaknesses:
     - VE-008
     - VE-009
     - VE-010
+  attacks:
 
-LLM09_misinformation:
+LLM06_unbounded_consumption:
+  name: "Unbounded Consumption"
+  total: 2
+  description: >
+    Public attack metadata mapped to Unbounded Consumption.
+  attacks:
+    - UC-001
+    - UC-002
+
+LLM07_misinformation:
   name: "Misinformation"
   total: 11
   description: >
@@ -259,11 +215,56 @@ LLM09_misinformation:
     - HTE-005
     - HTE-006
 
-LLM10_unbounded_consumption:
-  name: "Unbounded Consumption"
-  total: 2
+LLM08_hidden_context_exposure:
+  name: "Hidden Context Exposure"
+  total: 13
   description: >
-    Public attack metadata mapped to Unbounded Consumption.
+    Public attack metadata mapped to Hidden Context Exposure.
   attacks:
-    - UC-001
-    - UC-002
+    - SPL-001
+    - SPL-002
+    - SPL-003
+    - SPL-004
+    - SPL-005
+    - SPL-006
+    - SPL-007
+    - SPL-008
+    - SPL-009
+    - SPL-010
+    - SPL-011
+    - SPL-012
+    - IAC-003
+
+LLM09_vector_and_embedding_weaknesses:
+  name: "Vector and Embedding Weaknesses"
+  total: 10
+  description: >
+    Public attack metadata mapped to Vector and Embedding Weaknesses.
+  attacks:
+    - VE-001
+    - VE-002
+    - VE-003
+    - VE-004
+    - VE-005
+    - VE-006
+    - VE-007
+    - VE-008
+    - VE-009
+    - VE-010
+
+LLM10_improper_output_handling:
+  name: "Improper Output Handling"
+  total: 10
+  description: >
+    Public attack metadata mapped to Improper Output Handling.
+  attacks:
+    - IOH-001
+    - IOH-002
+    - IOH-003
+    - IOH-004
+    - IOH-005
+    - IOH-006
+    - IOH-007
+    - IOH-008
+    - UCE-001
+    - UCE-002

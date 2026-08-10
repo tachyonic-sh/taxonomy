@@ -1,6 +1,9 @@
-# tachyonic-heuristics: MITRE ATLAS Mapping
+# tachyonic taxonomy: MITRE ATLAS Mapping
 # Maps public attack IDs to MITRE ATLAS techniques
-# Reference: https://atlas.mitre.org/
+# Source: https://github.com/mitre-atlas/atlas-data
+# framework_version: 2026.07
+# framework_pin: mitre-atlas/atlas-data@2306ecaf04fb7a14be068b97e3ff40c2d9112e28
+# distribution_file: dist/v6/ATLAS-2026.07.yaml
 
 ---
 
@@ -282,13 +285,6 @@ AML_T0099:
     - VE-010
     - CTX-005
 
-AML_T0104:
-  name: "Publish Poisoned AI Agent Tool"
-  attacks:
-    - EA-004
-    - EA-016
-    - SC-009
-
 AML_T0105:
   name: "Escape to Host"
   attacks:
@@ -302,3 +298,10 @@ AML_T0110:
   attacks:
     - EA-004
     - EA-014
+
+AML_T0115_002:
+  name: "Publish Poisoned AI Artifacts: AI Agent Tools"
+  attacks:
+    - EA-004
+    - EA-016
+    - SC-009

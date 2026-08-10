@@ -3,6 +3,7 @@
 
 version: "1.0.0"
 updated: "2026-04-24"
+framework_version: "2026"  # OWASP Agentic Top 10 2026 v1.0. Unaffected by the LLM renumbering.
 
 ASI01_agent_goal_hijack:
   name: "Agent Goal Hijack"

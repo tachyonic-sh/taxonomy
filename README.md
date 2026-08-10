@@ -23,26 +23,32 @@ This taxonomy gives you:
 
 * **A checklist** — do your defenses cover all 16 categories?
 * **A common language** — reference specific attack IDs (e.g., PI-007, JB-015) in security discussions
-* **Framework mappings** — OWASP LLM Top 10 and MITRE ATLAS for compliance and audits
+* **Framework mappings** — OWASP GenAI LLM Top 10 2026 and MITRE ATLAS 2026.07 for compliance and audits
 * **Remediation guidance** — defensive strategies per category with code examples
 * **ESF Phase 1-3 foundation** — the naming, relating, and initial heuristics that all downstream hardening depends on
 
 ## Attack Categories
 
-| Category | ID Prefix | Count | OWASP LLM Top 10 |
+Identifiers below are from the **OWASP GenAI LLM Top 10 2026** (v1.0, released
+2026-08-04). That release renumbered eight of the ten risks without adding or
+removing any, so a 2025 identifier is still a valid 2026 identifier meaning a
+different risk. Where a category's identifier moved, the 2025 value is shown so
+an older report can be reconciled.
+
+| Category | ID Prefix | Count | OWASP LLM Top 10 2026 |
 | --- | --- | --- | --- |
 | Prompt Injection | PI | 20 | LLM01 |
-| System Prompt Leakage | SPL | 12 | LLM07 |
+| System Prompt Leakage | SPL | 12 | LLM08 Hidden Context Exposure (was LLM07) |
 | Jailbreaks | JB | 22 | LLM01 |
 | Vision/Multimodal | VI | 12 | LLM01 |
-| Excessive Agency / Tool Abuse | EA | 20 | LLM06 |
+| Excessive Agency / Tool Abuse | EA | 20 | LLM03 (was LLM06) |
 | Multi-Turn Manipulation | MT | 10 | LLM01 |
 | Sensitive Information Disclosure | SID | 10 | LLM02 |
-| Supply Chain | SC | 12 | LLM03 |
-| Vector/Embedding Attacks | VE | 10 | LLM08 |
-| Improper Output Handling | IOH | 8 | LLM05 |
-| Unbounded Consumption | UC | 2 | LLM10 |
-| Misinformation | MIS | 6 | LLM09 |
+| Supply Chain | SC | 12 | LLM04 (was LLM03) |
+| Vector/Embedding Attacks | VE | 10 | LLM09 (was LLM08) |
+| Improper Output Handling | IOH | 8 | LLM10 (was LLM05) |
+| Unbounded Consumption | UC | 2 | LLM06 (was LLM10) |
+| Misinformation | MIS | 6 | LLM07 (was LLM09) |
 | Memory/Context Poisoning | CTX | 6 | ASI06 |
 | Unexpected Code Execution | UCE | 6 | ASI05 |
 | Inter-Agent Communication | IAC | 6 | ASI07 |
@@ -100,11 +106,12 @@ taxonomy/                            ← repo root (tachyonic-sh/taxonomy)
 ### Map to compliance frameworks
 
 ```yaml
-# taxonomy/owasp_mapping.yaml
+# taxonomy/owasp_mapping.yaml — keys are <id>_<name>, so a key written against
+# an older release fails to resolve rather than resolving to the wrong risk.
 LLM01_prompt_injection:
-  attacks: [PI-001, PI-002, ..., PI-020, MT-001, ..., MT-008]
-  total: 28
-  description: Direct and indirect prompt injection techniques
+  name: "Prompt Injection"
+  total: 71
+  attacks: [PI-001, ..., PI-020, JB-001, ..., MT-010, VI-001, ..., VI-012]
 ```
 
 ### Assess your maturity
