@@ -1,10 +1,19 @@
-# Remediation by OWASP LLM Top 10 2025
-# Shared remediation guidance referenced by attacks
+# Remediation by OWASP GenAI LLM Top 10 2026
+# Shared remediation guidance referenced by attacks.
+#
+# Keys are <id>_<slug of name> and stay composite deliberately. A bare LLM03
+# would mean Excessive Agency here and Supply Chain in a 2025 report, and a
+# lookup against the wrong release would still succeed. A composite key fails
+# to resolve instead, which is the failure we want.
+#
+# previous_key records the 2025 key so a stored report can be reconciled.
 
-version: "2.0.0"
-updated: "2026-04-14"
+version: "3.0.0"
+updated: "2026-08-09"
+framework_version: "2026"
 
 LLM01_prompt_injection:
+  previous_key: LLM01_prompt_injection
   name: "Prompt Injection"
   summary: "Implement strict input/output boundaries and instruction hierarchy"
   controls:
@@ -23,7 +32,8 @@ LLM01_prompt_injection:
   references:
     - "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
 
-LLM02_sensitive_disclosure:
+LLM02_sensitive_information_disclosure:
+  previous_key: LLM02_sensitive_disclosure
   name: "Sensitive Information Disclosure"
   summary: "Prevent leakage of PII, credentials, and confidential data"
   controls:
@@ -40,7 +50,8 @@ LLM02_sensitive_disclosure:
       description: "Automatically redact detected sensitive data"
       implementation: "Replace with [REDACTED] tokens"
 
-LLM03_supply_chain:
+LLM04_supply_chain:
+  previous_key: LLM03_supply_chain
   name: "Supply Chain"
   summary: "Verify integrity of models, plugins, and data sources"
   controls:
@@ -57,7 +68,8 @@ LLM03_supply_chain:
       description: "Verify RAG data sources"
       implementation: "Content signing for indexed documents"
 
-LLM04_data_model_poisoning:
+LLM05_data_and_model_poisoning:
+  previous_key: LLM04_data_model_poisoning
   name: "Data and Model Poisoning"
   summary: "Verify provenance and integrity of all data entering model knowledge"
   controls:
@@ -88,7 +100,8 @@ LLM04_data_model_poisoning:
     LLM04 expanded from Training Data Poisoning (2023) to include fine-tuning,
     RAG, and agentic feedback loop poisoning.
 
-LLM05_improper_output:
+LLM10_improper_output_handling:
+  previous_key: LLM05_improper_output
   name: "Improper Output Handling"
   summary: "Sanitize LLM outputs before downstream use"
   controls:
@@ -101,7 +114,8 @@ LLM05_improper_output:
       description: "Validate commands before execution"
       implementation: "Whitelist allowed commands and args"
 
-LLM06_excessive_agency:
+LLM03_excessive_agency:
+  previous_key: LLM06_excessive_agency
   name: "Excessive Agency"
   summary: "Limit LLM permissions and require human approval"
   controls:
@@ -118,8 +132,9 @@ LLM06_excessive_agency:
       description: "Audit trail for all LLM actions"
       implementation: "Log tool calls with user context"
 
-LLM07_system_prompt_leakage:
-  name: "System Prompt Leakage"
+LLM08_hidden_context_exposure:
+  previous_key: LLM07_system_prompt_leakage
+  name: "Hidden Context Exposure"
   summary: "Protect system prompt confidentiality"
   controls:
     - id: "SP-C1"
@@ -135,7 +150,8 @@ LLM07_system_prompt_leakage:
       description: "Don't put secrets in system prompts"
       implementation: "Move sensitive logic server-side"
 
-LLM08_vector_embedding:
+LLM09_vector_and_embedding_weaknesses:
+  previous_key: LLM08_vector_embedding
   name: "Vector and Embedding Weaknesses"
   summary: "Secure RAG pipelines and embedding stores"
   controls:
@@ -148,7 +164,8 @@ LLM08_vector_embedding:
       description: "Scan indexed content for injections"
       implementation: "Detect prompt injection in documents"
 
-LLM09_misinformation:
+LLM07_misinformation:
+  previous_key: LLM09_misinformation
   name: "Misinformation"
   summary: "Detect and prevent generation of false or misleading information"
   controls:
@@ -175,7 +192,8 @@ LLM09_misinformation:
     Focus shifted to model-generated false information.
     Scanner-testable via prompts that elicit factual claims.
 
-LLM10_unbounded_consumption:
+LLM06_unbounded_consumption:
+  previous_key: LLM10_unbounded_consumption
   name: "Unbounded Consumption"
   summary: "Implement rate limiting and resource caps"
   controls:
