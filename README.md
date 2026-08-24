@@ -1,6 +1,6 @@
 # Tachyonic Taxonomy
 
-**An open taxonomy of 168 AI/LLM attack vectors, mapped to the OWASP LLM Top 10 and MITRE ATLAS.**
+**An open taxonomy of 168 AI/LLM attack vectors with versioned, source-pinned framework relations.**
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![ESF Phases 1-3](https://img.shields.io/badge/ESF-Phases_1--3-green.svg)](https://github.com/tachyonic-sh/esf)
@@ -9,7 +9,7 @@
 
 ## What is this?
 
-A structured, machine-readable catalog of every documented technique for attacking AI systems. Each attack has an ID, name, category, description, severity rating, and mapping to industry frameworks (OWASP LLM Top 10, MITRE ATLAS).
+A structured, machine-readable catalog of documented techniques for attacking AI systems. Each attack has an ID, name, category, description, severity rating, and reviewed relations to applicable public frameworks, including OWASP LLM, Agentic, and MCP taxonomies and MITRE ATLAS.
 
 This is the **what** — what attacks exist and how to defend against them. It does not include payloads, detection logic, or model-specific data.
 
@@ -23,7 +23,7 @@ This taxonomy gives you:
 
 * **A checklist** — do your defenses cover all 16 categories?
 * **A common language** — reference specific attack IDs (e.g., PI-007, JB-015) in security discussions
-* **Framework mappings** — OWASP GenAI LLM Top 10 2026 and MITRE ATLAS 2026.07 for compliance and audits
+* **Framework traceability** — versioned OWASP and MITRE ATLAS control references for security assessment and audit evidence; a mapping is not a compliance or certification result
 * **Remediation guidance** — defensive strategies per category with code examples
 * **ESF Phase 1-3 foundation** — the naming, relating, and initial heuristics that all downstream hardening depends on
 
@@ -60,11 +60,11 @@ an older report can be reconciled.
 ```
 taxonomy/                            ← repo root (tachyonic-sh/taxonomy)
 ├── taxonomy/                        ← ESF Phase 1: Name
-│   ├── attack_catalog.yaml          # All 168 attacks (IDs, names, descriptions, severity)
+│   ├── attack_catalog.yaml          # Generated: 168 attacks plus generic, versioned framework_refs
 │   ├── owasp_mapping.yaml           # Attack → OWASP LLM Top 10 mapping
 │   └── atlas_mapping.yaml           # Attack → MITRE ATLAS mapping
 ├── schema/
-│   └── attack_schema.yaml           # YAML schema for attack definitions
+│   └── attack_schema.yaml           # Generated public schema (do not edit directly)
 ├── remediation/                     ← ESF Phase 3: Guess
 │   ├── by_owasp.yaml               # Defensive guidance per OWASP category
 │   └── code_examples/
@@ -94,6 +94,14 @@ taxonomy/                            ← repo root (tachyonic-sh/taxonomy)
     its system prompt and follow new instructions instead.
   severity: critical
   owasp: LLM01
+  framework_refs:
+    - framework_id: owasp_llm
+      framework_version: 2026-v1.0
+      control_id: LLM01
+      control_name: Prompt Injection
+      control_name_origin: upstream
+      relation: classifies
+      strength: direct
 ```
 
 ### Use in your security assessments
@@ -101,9 +109,11 @@ taxonomy/                            ← repo root (tachyonic-sh/taxonomy)
 1. Clone the repo
 2. Review `taxonomy/attack_catalog.yaml` for the full attack surface
 3. Check `remediation/by_owasp.yaml` for defensive guidance
-4. Use the schema in `schema/attack_schema.yaml` to add your own attack definitions
+4. Use `schema/attack_schema.yaml` to prepare a
+   [data proposal](https://github.com/tachyonic-sh/taxonomy/issues/new); maintainers
+   ingest accepted proposals into the canonical corpus and regenerate the catalog
 
-### Map to compliance frameworks
+### Resolve framework relations
 
 ```yaml
 # taxonomy/owasp_mapping.yaml — keys are <id>_<name>, so a key written against
@@ -113,6 +123,11 @@ LLM01_prompt_injection:
   total: 71
   attacks: [PI-001, ..., PI-020, JB-001, ..., MT-010, VI-001, ..., VI-012]
 ```
+
+`framework_refs` in `taxonomy/attack_catalog.yaml` is the generic interface.
+Each reference carries its framework version, control identifier and name,
+relation type, strength, and source pin when available. The legacy `owasp` and
+`atlas` fields remain during a compatibility window.
 
 ### Assess your maturity
 
@@ -127,7 +142,7 @@ The ESF defines how security knowledge matures through ten phases — from namin
 | ESF Phase | This Repo | What It Does |
 |---|---|---|
 | Phase 1: **Name** | `taxonomy/` | Classifies 168 attacks with stable IDs and framework mappings |
-| Phase 2: **Relate** | `taxonomy/*_mapping.yaml` | Maps relationships to OWASP and MITRE ATLAS |
+| Phase 2: **Relate** | `taxonomy/attack_catalog.yaml`, `taxonomy/*_mapping.yaml` | Publishes reviewed, versioned relations to approved framework controls |
 | Phase 3: **Guess** | `remediation/` | Defensive heuristics and code examples |
 
 See [ESF.md](ESF.md) for the full mapping and growth roadmap.
@@ -148,9 +163,13 @@ These are the difference between knowing attacks exist and being able to systema
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome:
 
 * New attack technique descriptions
-* Additional framework mappings (NIST, ISO 27001, etc.)
+* Source-pinned framework relation proposals with license and claim boundaries
 * Remediation guidance improvements
 * Research paper references
+
+The catalog and public schema are generated artifacts. Propose data changes
+through the canonical ingest route in CONTRIBUTING rather than editing those
+files directly.
 
 ## Professional Assessment
 

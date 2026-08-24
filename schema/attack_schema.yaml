@@ -1,3 +1,7 @@
+# GENERATED FILE — DO NOT EDIT DIRECTLY.
+# Canonical source: Tachyonic corpus. Public release generation owns this file.
+# Propose changes via CONTRIBUTING.md; maintainers ingest accepted changes
+# upstream and regenerate this artifact.
 # Attack Definition Schema
 # Public schema for sanitized attack metadata. No payload, detection, scoring,
 # priority, reproduction, or model-specific fields are included.
@@ -12,7 +16,6 @@ attack:
     - category
     - description
     - severity
-    - owasp
   properties:
     id:
       type: string
@@ -74,6 +77,39 @@ attack:
         mitre_atlas:
           type: array
           items:
+            type: string
+    framework_refs:
+      type: array
+      items:
+        type: object
+        required:
+          - framework_id
+          - framework_version
+          - control_id
+          - relation
+          - strength
+        properties:
+          framework_id:
+            type: string
+            pattern: "^[a-z][a-z0-9_]*$"
+          framework_version:
+            type: string
+          control_id:
+            type: string
+          control_name:
+            type: string
+          control_name_origin:
+            type: string
+            enum: [upstream, tachyonic]
+          previous_control_id:
+            type: string
+          relation:
+            type: string
+            enum: [classifies, tests, verifies, mitigates, evidences, required_by, supersedes]
+          strength:
+            type: string
+            enum: [direct, partial, inherited, contextual]
+          source_pin:
             type: string
     remediation_summary:
       type: string
