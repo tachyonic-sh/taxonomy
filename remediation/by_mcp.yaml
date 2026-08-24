@@ -49,7 +49,7 @@ MCP03_tool_poisoning:
       implementation: "Re-verify tool schema hash after connection; alert on mismatch"
 
 MCP04_supply_chain:
-  name: "Software Supply Chain & Dependency Tampering"
+  name: "Software Supply Chain Attacks & Dependency Tampering"
   summary: "Secure the MCP component supply chain"
   controls:
     - id: "MCP04-C1"
