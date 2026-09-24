@@ -173,7 +173,7 @@ files directly.
 
 ## Professional Assessment
 
-Want to test your AI system against all 168 attack vectors? [Tachyonic](https://tachyonicai.com) offers 48-hour red team assessments with full reporting, resistance scoring, and ESF maturity assessment.
+Want to use this taxonomy to scope an AI security assessment? [Tachyonic](https://tachyonicai.com) offers 48-hour red team assessments with a target-specific test plan and reporting. The 168 attack vectors are a catalog, not a claim that every technique is executable or tested in every engagement; resistance scoring and ESF maturity review depend on the agreed scope and available evidence.
 
 [Book a scoping call →](https://cal.com/tachyonicai/ai-security-scoping)
 
