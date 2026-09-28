@@ -171,11 +171,11 @@ The catalog and public schema are generated artifacts. Propose data changes
 through the canonical ingest route in CONTRIBUTING rather than editing those
 files directly.
 
-## Professional Assessment
+## Testing With Tachyonic
 
-Want to use this taxonomy to scope an AI security assessment? [Tachyonic](https://tachyonicai.com) offers 48-hour red team assessments with a target-specific test plan and reporting. The 168 attack vectors are a catalog, not a claim that every technique is executable or tested in every engagement; resistance scoring and ESF maturity review depend on the agreed scope and available evidence.
+[Tachyonic](https://tachyonic.co) runs security runtimes for AI agents and MCP systems. Start free on the [platform](https://platform.tachyonic.co) or follow the [quickstart](https://docs.tachyonic.co/docs/quickstart); Enterprise plans add hands-on assessment cycles and remediation review. The 168 attack vectors are a catalog, not a claim that every technique is executable or tested in every engagement; what a run covers depends on the target and the agreed scope.
 
-[Book a scoping call →](https://cal.com/tachyonicai/ai-security-scoping)
+[Book a 15-minute call →](https://cal.com/tachyonic/security-scoping)
 
 ## License
 

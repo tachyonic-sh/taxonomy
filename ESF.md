@@ -29,7 +29,7 @@ This repository shares the **epistemology** — what attacks exist, how they rel
 - Model-specific success rates
 - Confidence scoring methodology
 
-These remain proprietary because they power [Tachyonic's](https://tachyonicai.com) 48-hour assessment service. The open taxonomy tells you *what* to defend against. The proprietary layer tells you *how* to test and detect.
+These remain proprietary because they power [Tachyonic's](https://tachyonic.co) security runtimes. The open taxonomy tells you *what* to defend against. The proprietary layer tells you *how* to test and detect.
 
 ## Growth Areas
 
