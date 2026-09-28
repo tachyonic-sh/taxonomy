@@ -31,7 +31,7 @@ AML_T0014:
     - SID-003
 
 AML_T0020:
-  name: "Poison Training Data"
+  name: "Training Data Poisoning"
   attacks:
     - SC-001
     - VE-002

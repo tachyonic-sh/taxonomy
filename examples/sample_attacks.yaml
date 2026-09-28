@@ -34,10 +34,7 @@
   severity: critical
   owasp: LLM01
   atlas: AML.T0051.001
-  description: 'Embeds text instructions within images that vision-language models
-
-    read and potentially follow. The FigStep attack achieves 82.5%
-
-    success rate by placing jailbreak prompts as text in images.'
+  description: Embeds text instructions within images that vision-language models
+    read and may follow as commands.
   example_concept: A non-operational conceptual example is shown in prose only. The
     public repository intentionally excludes executable payloads.

@@ -5,7 +5,8 @@ We welcome contributions that expand and improve this taxonomy.
 ## What we accept
 
 - **New attack descriptions** — documented techniques not yet in the catalog
-- **Framework mappings** — NIST AI RMF, ISO 27001, EU AI Act, etc.
+- **Framework relations** — source-pinned control relations with a rationale,
+  relation type, strength, and license review
 - **Remediation improvements** — better defensive guidance or code examples
 - **Research references** — academic papers, blog posts, CVEs
 - **Corrections** — factual errors, broken links, typos
@@ -19,20 +20,37 @@ We welcome contributions that expand and improve this taxonomy.
 
 This is a taxonomy, not an exploit database.
 
-## How to contribute
+## Generated files and canonical ingest
+
+`taxonomy/attack_catalog.yaml` and `schema/attack_schema.yaml` are generated
+release artifacts. Public release generation owns each whole file, so direct
+edits will be replaced on the next sync.
+
+For a new attack, correction, or framework relation, open a
+[data proposal issue](https://github.com/tachyonic-sh/taxonomy/issues/new) and
+include:
+
+- the proposed normalized YAML record, following `schema/attack_schema.yaml`
+- primary or authoritative source references
+- the suggested severity and framework relation rationale
+- the upstream version or immutable source pin and any known license terms
+
+Maintainers review accepted proposals, ingest them into the canonical Tachyonic
+corpus, and regenerate the public artifacts. Pull requests remain appropriate
+for hand-authored documentation, remediation guidance, examples, and research
+references that are not generated files.
+
+## How to contribute hand-authored content
 
 1. Fork the repository
-2. Create a branch: `git checkout -b add-attack-technique`
-3. Follow the schema in `schema/attack_schema.yaml`
-4. Submit a pull request with:
-   - Description of the technique
-   - Source reference (paper, blog, CVE)
-   - OWASP LLM Top 10 mapping
-   - Suggested severity rating
+2. Create a focused branch
+3. Avoid files whose header says `GENERATED FILE — DO NOT EDIT DIRECTLY`
+4. Submit a pull request describing the change and its sources
 
 ## Attack definition format
 
-Follow the schema in `schema/attack_schema.yaml`:
+Use this shape in a data proposal; maintainers validate it against the generated
+schema before canonical ingest:
 
 ```yaml
 - id: XX-NNN          # Category prefix + 3-digit number
@@ -44,10 +62,24 @@ Follow the schema in `schema/attack_schema.yaml`:
   severity: critical|high|medium|low
   owasp: LLM01-LLM10
   atlas: AML.T0000     # MITRE ATLAS technique ID (if applicable)
+  framework_refs:
+    - framework_id: framework_slug
+      framework_version: exact-version
+      control_id: CONTROL-ID
+      control_name: Published or clearly attributed display name
+      control_name_origin: upstream|tachyonic
+      relation: classifies|tests
+      strength: direct|partial|inherited|contextual
   references:
     - url: https://...
       title: Source reference
 ```
+
+Framework references must resolve to a pinned source in the private canonical
+corpus and be permitted by that source manifest's public export policy. A
+mapping means only that a reviewed relation exists; it must not be described as
+a passed test, compliance determination, certification, or independent
+assurance.
 
 ## Severity ratings
 
